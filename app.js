@@ -1,12 +1,15 @@
+require('dotenv').config()
 require('./config/db.config')
 
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors');
-const passport = require('passport')
 
+const passport = require('passport')
+require('./config/passport')
 
 const indexRouter = require('./routes/index.routes')
 const mascotRouter = require('./routes/pet.routes')
@@ -15,14 +18,12 @@ const userRouter = require('./routes/user.routes')
 
 const app = express()
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-}
 
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize())
 
@@ -45,7 +46,4 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).json(err.message)
 })
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+module.exports = app

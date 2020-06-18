@@ -4,24 +4,25 @@
   "description": "The backen of Pet Adoption App",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node ./bin/www",
+    "dev-win": "SET DEBUG=pet-adoption-server:* && nodemon ./bin/www",
+    "dev-mac": "DEBUG=pet-adoption-server:* nodemon ./bin/www"
   },
   "author": "Ignacio Ripoli",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "bcrypt": "^4.0.0",
+    "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
-    "debug": "^4.1.1",
-    "express": "^4.17.1",
-    "http-errors": "^1.7.3",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.19",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.4",
+    "mongoose": "^5.9.2",
+    "morgan": "~1.9.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "passport-local": "^1.0.0"
   }
 }

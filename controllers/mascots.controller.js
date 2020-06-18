@@ -1,4 +1,4 @@
-const Mascot = require('../models/Mascot')
+const Mascot = require('../models/mascots.model')
 
 const create = async (req, res, next) => {
   try {
